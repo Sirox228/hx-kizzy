@@ -1,6 +1,7 @@
 package kizzy;
 
-// (sirox) lmao, never thought that access is also importing the class
+import lime.system.JNI
+
 @:access(lime.system.JNI)
 class KizzyInterface {
 	
