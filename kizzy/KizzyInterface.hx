@@ -1,6 +1,6 @@
 package kizzy;
 
-import lime.system.JNI
+import lime.system.JNI;
 
 @:access(lime.system.JNI)
 class KizzyInterface {
