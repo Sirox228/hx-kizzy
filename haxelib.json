@@ -1,0 +1,21 @@
+{
+	"name":"hx-kizzy",
+	"url":"https://github.com/Sirox228/hx-kizzy",
+	"tags":[
+		"android",
+		"lime",
+		"jni",
+		"haxe",
+		"rpc",
+		"kizzy"
+	],
+	"description":"JNI bindings for kizzy-rpc",
+	"version":"1.0",
+	"releasenote":"",
+	"contributors":[
+		"Sirox228"
+	],
+	"dependencies":{
+		"lime":""
+	}
+}
