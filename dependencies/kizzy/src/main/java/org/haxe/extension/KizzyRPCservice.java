@@ -20,6 +20,7 @@ import javax.net.ssl.SSLParameters;
 /*
 * @author: dead8309
 * @original: https://github.com/dead8309/KizzyRPC/blob/3e6a2d9ed337590fa20abb575ac23921c0094f88/KizzyRPC/src/main/java/com/my/kizzyrpc/KizzyRPCservice.java
+* Thats a bit modified version
 */
 
 public class KizzyRPCservice {
@@ -40,11 +41,7 @@ public class KizzyRPCservice {
     ArrayList<String> buttons = new ArrayList<>();
     ArrayList<String> button_url = new ArrayList<>();
 
-
-    public KizzyRPCservice(String token) {
-
-        this.token = token;
-
+    public KizzyRPCservice() {
         heartbeatRunnable = ()->{
             try {
                 if (heartbeat_interval < 10000)throw new RuntimeException("invalid");
@@ -56,11 +53,31 @@ public class KizzyRPCservice {
             }
         };
     }
+    
+    public static KizzyRPCservice create(String token) {
+    	return new KizzyRPCservice();
+   }
+    
     public void closeRPC(){
         if(heartbeatThr != null && !heartbeatThr.isInterrupted())
         heartbeatThr.interrupt();
         if(webSocketClient != null)
         webSocketClient.close(1000);
+    }
+    
+    public int currentTimeMillis() {
+    	return Integer.valueOf(System.currentTimeMillis());
+    }
+    
+    /**
+     * Account token for Rpc
+     * Account token is required to create an Rpc on YOUR account
+     * @param activity_name
+     * @return
+     */
+    public KizzyRPCservice setToken(String token) {
+        this.token = token;
+        return this;
     }
     
     /**
@@ -137,8 +154,8 @@ public class KizzyRPCservice {
      * @param start_timestamps
      * @return
      */
-    public KizzyRPCservice setStartTimestamps(Long start_timestamps) {
-        this.start_timestamps = start_timestamps;
+    public KizzyRPCservice setStartTimestamps(int start_timestamps) {
+        this.start_timestamps = Long.valueOf(start_timestamps);
         return this;
     }
 
@@ -148,8 +165,8 @@ public class KizzyRPCservice {
      * @param stop_timestamps
      * @return
      */
-    public KizzyRPCservice setStopTimestamps(Long stop_timestamps) {
-        this.stop_timestamps = stop_timestamps;
+    public KizzyRPCservice setStopTimestamps(int stop_timestamps) {
+        this.stop_timestamps = Long.valueOf(stop_timestamps);
         return this;
     }
 
