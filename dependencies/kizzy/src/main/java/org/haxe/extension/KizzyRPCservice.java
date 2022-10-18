@@ -54,7 +54,7 @@ public class KizzyRPCservice {
         };
     }
     
-    public static KizzyRPCservice create(String token) {
+    public static KizzyRPCservice create() {
     	return new KizzyRPCservice();
    }
     
