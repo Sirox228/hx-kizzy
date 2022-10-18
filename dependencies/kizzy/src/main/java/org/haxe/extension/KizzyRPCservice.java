@@ -66,7 +66,7 @@ public class KizzyRPCservice {
     }
     
     public int currentTimeMillis() {
-    	return Integer.valueOf(System.currentTimeMillis());
+    	return Math.toIntExact(System.currentTimeMillis());
     }
     
     /**
