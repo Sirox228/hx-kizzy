@@ -17,13 +17,15 @@ import java.util.Map;
 
 import javax.net.ssl.SSLParameters;
 
+import org.haxe.extension.Extension;
+
 /*
 * @author: dead8309
 * @original: https://github.com/dead8309/KizzyRPC/blob/3e6a2d9ed337590fa20abb575ac23921c0094f88/KizzyRPC/src/main/java/com/my/kizzyrpc/KizzyRPCservice.java
 * Thats a bit modified version
 */
 
-public class KizzyRPCservice {
+public class KizzyRPCservice extends Extension {
 
     String token;
     String applicationId,activity_name, details, state, large_image, small_image, status;
