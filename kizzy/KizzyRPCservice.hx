@@ -8,13 +8,7 @@ class KizzyRPCservice {
 	var service:Dynamic;
 	
 	public function new() {
-		// is here just to be able to call `new KizzyRPCservice();`
-	}
-	
-	public function create():KizzyRPCservice
-	{
 		service = JNI.createStaticMethod('org/haxe/extension/KizzyRPCservice', 'create', '()Lorg/haxe/extension/KizzyRPCservice;');
-		return this;
 	}
 	
 	public function closeRPC():KizzyRPCservice
