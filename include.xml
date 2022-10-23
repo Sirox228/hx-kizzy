@@ -8,5 +8,5 @@
 	<config:android permission="android.permission.INTERNET" />
 
         <!-- thats the worst way to fix compiling errors, but i don't know any other -->
-        <config:android min-sdk-version="26" />
+        <config:android minimum-sdk-version="26" />
 </extension>
