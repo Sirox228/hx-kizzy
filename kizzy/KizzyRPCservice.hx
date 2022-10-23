@@ -8,7 +8,8 @@ class KizzyRPCservice {
 	var service:Dynamic;
 	
 	public function new() {
-		service = JNI.createStaticMethod('org/haxe/extension/KizzyRPCservice', 'create', '()Lorg/haxe/extension/KizzyRPCservice;');
+		var serviceJava:Dynamic = JNI.createStaticMethod('org/haxe/extension/KizzyRPCservice', 'create', '()Lorg/haxe/extension/KizzyRPCservice;');
+                service = serviceJava();
 	}
 	
 	public function closeRPC():KizzyRPCservice
