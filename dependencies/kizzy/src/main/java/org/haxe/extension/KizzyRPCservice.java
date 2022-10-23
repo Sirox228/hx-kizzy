@@ -17,15 +17,13 @@ import java.util.Map;
 
 import javax.net.ssl.SSLParameters;
 
-import org.haxe.extension.Extension;
-
 /*
 * @author: dead8309
 * @original: https://github.com/dead8309/KizzyRPC/blob/3e6a2d9ed337590fa20abb575ac23921c0094f88/KizzyRPC/src/main/java/com/my/kizzyrpc/KizzyRPCservice.java
 * Thats a bit modified version
 */
 
-public class KizzyRPCservice extends Extension {
+public class KizzyRPCservice {
 
     String token;
     String applicationId,activity_name, details, state, large_image, small_image, status;
@@ -43,7 +41,9 @@ public class KizzyRPCservice extends Extension {
     ArrayList<String> buttons = new ArrayList<>();
     ArrayList<String> button_url = new ArrayList<>();
 
-    public KizzyRPCservice() {
+    public KizzyRPCservice(String token) {
+        this.token = token;
+
         heartbeatRunnable = ()->{
             try {
                 if (heartbeat_interval < 10000)throw new RuntimeException("invalid");
@@ -56,10 +56,6 @@ public class KizzyRPCservice extends Extension {
         };
     }
     
-    public static KizzyRPCservice create() {
-    	return new KizzyRPCservice();
-   }
-    
     public void closeRPC(){
         if(heartbeatThr != null && !heartbeatThr.isInterrupted())
         heartbeatThr.interrupt();
@@ -69,17 +65,6 @@ public class KizzyRPCservice extends Extension {
     
     public int currentTimeMillis() {
     	return Math.toIntExact(System.currentTimeMillis());
-    }
-    
-    /**
-     * Account token for Rpc
-     * Account token is required to create an Rpc on YOUR account
-     * @param activity_name
-     * @return
-     */
-    public KizzyRPCservice setToken(String token) {
-        this.token = token;
-        return this;
     }
     
     /**
