@@ -7,20 +7,14 @@ class KizzyRPCservice {
 	
 	var service:Dynamic;
 	
-	public function new() {
-		var serviceJava:Dynamic = JNI.createStaticMethod('org/haxe/extension/KizzyRPCservice', 'create', '()Lorg/haxe/extension/KizzyRPCservice;');
-                service = serviceJava();
+	public function new(token:String) {
+		var serviceJava:Dynamic = JNI.createStaticMethod('org/haxe/extension/KizzyRPCservice', '<init>', '(Ljava/lang/String;)Lorg/haxe/extension/KizzyRPCservice;');
+                service = serviceJava(token);
 	}
 	
 	public function closeRPC():KizzyRPCservice
 	{
 		JNI.callMember(JNI.createMemberMethod('org/haxe/extension/KizzyRPCservice', 'closeRPC', '()V'), service, []);
-		return this;
-	}
-	
-	public function setToken(token:String):KizzyRPCservice
-	{
-		JNI.callMember(JNI.createMemberMethod('org/haxe/extension/KizzyRPCservice', 'setToken', '(Ljava/lang/String;)Lorg/haxe/extension/KizzyRPCservice;'), service, [token]);
 		return this;
 	}
 	
