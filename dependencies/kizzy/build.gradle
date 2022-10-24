@@ -3,16 +3,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
-    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
-    compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
-    }
+    compileSdk 32
+
     defaultConfig {
-        minSdkVersion 26
+        minSdk 27
+        buildToolsVersion "33.0.0"
         consumerProguardFiles "consumer-rules.pro"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,5 +27,4 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'org.java-websocket:Java-WebSocket:1.5.3'
     implementation 'org.slf4j:slf4j-android:1.7.36'
-    api project(':deps:extension-api')
 }
