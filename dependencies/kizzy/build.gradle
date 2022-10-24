@@ -6,7 +6,7 @@ android {
     compileSdkVersion 32
 
     defaultConfig {
-        minSdk 27
+        minSdkVersion 27
         buildToolsVersion "33.0.0"
         consumerProguardFiles "consumer-rules.pro"
     }
