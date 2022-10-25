@@ -54,15 +54,15 @@ class KizzyRPCservice {
 		return this;
 	}
 	
-	public function setStartTimestamps(start_timestamps:Int):KizzyRPCservice
+	public function setStartTimestamps(start_timestamps:Int, useTimeMillis:Bool = false):KizzyRPCservice
 	{
-		JNI.callMember(JNI.createMemberMethod('org/haxe/extension/KizzyRPCservice', 'setStartTimestamps', '(I)Lorg/haxe/extension/KizzyRPCservice;'), service, [start_timestamps]);
+		JNI.callMember(JNI.createMemberMethod('org/haxe/extension/KizzyRPCservice', 'setStartTimestamps', '(IZ)Lorg/haxe/extension/KizzyRPCservice;'), service, [start_timestamps, useTimeMillis]);
 		return this;
 	}
 	
-	public function setStopTimestamps(stop_timestamps:Int):KizzyRPCservice
+	public function setStopTimestamps(stop_timestamps:Int, useTimeMillis:Bool = false):KizzyRPCservice
 	{
-		JNI.callMember(JNI.createMemberMethod('org/haxe/extension/KizzyRPCservice', 'setStopTimestamps', '(I)Lorg/haxe/extension/KizzyRPCservice;'), service, [stop_timestamps]);
+		JNI.callMember(JNI.createMemberMethod('org/haxe/extension/KizzyRPCservice', 'setStopTimestamps', '(IZ)Lorg/haxe/extension/KizzyRPCservice;'), service, [stop_timestamps, useTimeMillis]);
 		return this;
 	}
 	

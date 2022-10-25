@@ -44,27 +44,38 @@ public class KizzyRPCservice {
     public KizzyRPCservice(String token) {
         this.token = token;
 
-        heartbeatRunnable = ()->{
-            try {
-                if (heartbeat_interval < 10000)throw new RuntimeException("invalid");
-                Thread.sleep(heartbeat_interval);
-                webSocketClient.send("{\"op\":1, \"d\":" + (seq==0?"null":Integer.toString(seq)) + "}");
+        heartbeatRunnable = new Runnable() {
+            public void run() {
+                try {
+                    if (heartbeat_interval < 10000)throw new RuntimeException("invalid");
+                    Thread.sleep(heartbeat_interval);
+                    webSocketClient.send("{\"op\":1, \"d\":" + (seq==0?"null":Integer.toString(seq)) + "}");
 
-            } catch (InterruptedException e) {
-               e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         };
     }
     
     public void closeRPC(){
-        if(heartbeatThr != null && !heartbeatThr.isInterrupted())
         heartbeatThr.interrupt();
-        if(webSocketClient != null)
         webSocketClient.close(1000);
     }
-    
-    public int currentTimeMillis() {
-    	return Math.toIntExact(System.currentTimeMillis());
+
+    public boolean ag() {
+        boolean res = heartbeatThr != null;
+        return res;
+    }
+
+    public boolean agf() {
+        boolean res = !heartbeatThr.isInterrupted();
+        return res;
+    }
+
+    public boolean agt() {
+        boolean res = webSocketClient != null;
+        return res;
     }
     
     /**
@@ -141,8 +152,9 @@ public class KizzyRPCservice {
      * @param start_timestamps
      * @return
      */
-    public KizzyRPCservice setStartTimestamps(int start_timestamps) {
-        this.start_timestamps = Long.valueOf(start_timestamps);
+    public KizzyRPCservice setStartTimestamps(int start_timestamps, boolean useTimeMillis) {
+        Long time = new Long(useTimeMillis ? System.currentTimeMillis() + start_timestamps : start_timestamps);
+        this.start_timestamps = time;
         return this;
     }
 
@@ -152,8 +164,9 @@ public class KizzyRPCservice {
      * @param stop_timestamps
      * @return
      */
-    public KizzyRPCservice setStopTimestamps(int stop_timestamps) {
-        this.stop_timestamps = Long.valueOf(stop_timestamps);
+    public KizzyRPCservice setStopTimestamps(int stop_timestamps, boolean useTimeMillis) {
+        Long time = new Long(useTimeMillis ? System.currentTimeMillis() + stop_timestamps : stop_timestamps);
+        this.stop_timestamps = time;
         return this;
     }
 
