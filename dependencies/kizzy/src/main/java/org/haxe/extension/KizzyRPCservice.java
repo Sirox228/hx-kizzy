@@ -59,8 +59,10 @@ public class KizzyRPCservice {
     }
     
     public void closeRPC(){
-        heartbeatThr.interrupt();
-        webSocketClient.close(1000);
+        if(heartbeatThr != null && !heartbeatThr.isInterrupted())
+            heartbeatThr.interrupt();
+        if(webSocketClient != null)
+            webSocketClient.close(1000);
     }
 
     public boolean ag() {
