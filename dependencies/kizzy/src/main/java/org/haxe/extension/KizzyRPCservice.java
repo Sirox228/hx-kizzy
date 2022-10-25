@@ -17,7 +17,7 @@ import java.util.Map;
 
 import javax.net.ssl.SSLParameters;
 
-import org.haxe.extension.Extension
+import org.haxe.extension.Extension;
 
 /*
 * @author: dead8309
