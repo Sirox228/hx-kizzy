@@ -7,6 +7,8 @@
 	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
 	<config:android permission="android.permission.INTERNET" />
 
+        <config:android permission="android.permission.FOREGROUND_SERVICE" />
+
         <!-- thats the worst way to fix compiling errors, but i don't know any other -->
         <config:android minimum-sdk-version="27" />
 </extension>
